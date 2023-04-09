@@ -3,10 +3,11 @@
 
 1. git clone repository
 2. apt install nodejs
-2. node install rocket.chat axios node-summarizer cheerio cli-spinners natural cli-cursor readline
-3. Go to your Rocket Chat, create a bot (user) and a room. Add this bot to the room.
+3. node install rocket.chat axios node-summarizer cheerio cli-spinners natural cli-cursor readline
+4. Go to your Rocket Chat, create a bot (user) and a room. Add this bot to the room.
 
-4. Change vars:
+5. Change vars:
+
 const ROCKETCHAT_URL = 'https://YOUR_URL_ROCKETCHAT'
 
 const ROCKETCHAT_USER = 'YOUR_BOT_LOGIN';
@@ -21,7 +22,7 @@ const googleApiKey = 'YOUR_GOOGLE_APIKEY';
 
 const customSearchEngineId = 'YOUR_SEARCH_ENGINEID';
 
-5. node chatgpt.js
+6. node chatgpt.js
 
 ...
 

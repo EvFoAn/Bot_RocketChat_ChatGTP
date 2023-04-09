@@ -8,11 +8,17 @@
 
 4. Change vars:
 const ROCKETCHAT_URL = 'https://YOUR_URL_ROCKETCHAT'
+
 const ROCKETCHAT_USER = 'YOUR_BOT_LOGIN';
+
 const ROCKETCHAT_PASSWORD = 'YOUR_PASSWORD';
+
 const rocketChatChannel = 'ChatGPT';
+
 const OPENAI_API_KEY = 'YOUR_API_KEY_OPENAI';
+
 const googleApiKey = 'YOUR_GOOGLE_APIKEY';
+
 const customSearchEngineId = 'YOUR_SEARCH_ENGINEID';
 
 5. node chatgpt.js

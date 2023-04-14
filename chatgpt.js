@@ -194,7 +194,10 @@ const runBot = async () => {
             requestBodyAskForInternet.messages.push({
               role: "user",
               content: `Show page descriptions:${linksToAnalyze} give your comprehensive assessment of the information found on requests and the conclusion of what you analyzed. This is title:${tl} -> This is link:${linksToAnalyze}. In completing your answer, you must 100% use the following: [title](link) ( brackets and quotes must be preserved ) | a brief analysis of the page and general conclusions for all pages - page analysis and general output should be added`,
-            });
+              // RUSSINA LANG below:
+	      // { role: "user", content: `Покажи описание страниц:${linksToAnalyze} дай свою комплексную оценку найденной информации по запросам и вывод того что ты анализировал. Это title:${tl} -> Это link:${linksToAnalyze}. В оформление своего ответа ты должен 100% использовать следующее: [title](link) ( скобки и кавычки должны быть сохранены ) | краткий анализ страницы и общие выводы по всем страницам - анализ страниц и общие вывод должны быть добавлены`,
+	    
+	    });
 
             const response = await axios.post(openaiEndpoint, requestBodyAskForInternet, {
               headers: {

@@ -41,4 +41,6 @@ node chatgpt.js
 
 
 
+Request find from Internet must be as: "... " Exmample: "... where I can buy RPI 4 ?"
 
+![ChatGPT-RocketChat-Bot](https://github.com/EvFoAn/ChatGPT-RocketChat-Bot/blob/main/Rocket.Chat.png)

@@ -12,16 +12,16 @@ const TfIdf = natural.TfIdf;
 const tfidf = new TfIdf();
 const openaiEndpoint = 'https://api.openai.com/v1/chat/completions';
 const ROCKETCHAT_URL = 'http://127.0.0.1:3000'; // or 'https://HOSTNAME';
-const ROCKETCHAT_USER = 'NAME_BOT';
-const ROCKETCHAT_PASSWORD = 'PASSWORD_BOT';
-const rocketChatChannel = 'ROOM';
-const OPENAI_API_KEY = 'API_KEY';
+const ROCKETCHAT_USER = 'BOT_NAME';
+const ROCKETCHAT_PASSWORD = 'BOT_PASSWORD';
+const rocketChatChannel = 'ChatGPT';
+const OPENAI_API_KEY = 'OPENAI_API_KEY';
 
-// Importing modules to indicate input
+// Импортируем модули для индикации ввода
 const cursor = require('cli-cursor');
 const readline = require('readline');
 
-// Setting up the Google API
+// Настройка Google API
 const googleApiKey = 'API_KEY';
 const customSearchEngineId = 'API_KEY';
 
@@ -69,7 +69,7 @@ async function sendResponse(responseBody, roomId) {
     lastResponse = aiReply;
     await sendMessage(aiReply, roomId);
 
-    // Save the bots response to previousMessages
+    // Save the bot's response to previousMessages
     previousMessages.push(aiReply);
     if (previousMessages.length > 4) {
       previousMessages.shift();
@@ -92,7 +92,7 @@ async function sendSpecialResponse(responseBody, roomId) {
       lastResponse = aiReply;
       await sendMessage(aiReply, roomId);
 
-      // Saving the bots response to previousMessages
+      // Save the bots response to previousMessages
       previousMessages.push(aiReply);
       if (previousMessages.length > 4) {
          previousMessages.shift();
@@ -165,7 +165,6 @@ const runBot = async () => {
         };
 
 
-
 	const requestBodyAskForInternet = {
           model: "gpt-3.5-turbo",
           messages: [
@@ -191,13 +190,11 @@ const runBot = async () => {
             const title = searchResults.map(result => `- ${result.title}`).join('\n');
 	    const tl = title.replace(/[\#\$\%\&\(\)\*\+\/:;<=>\?@\^_\{\|\}\~]/g, '');
 
-            requestBodyAskForInternet.messages.push({
-              role: "user",
-              content: `Show page descriptions:${linksToAnalyze} give your comprehensive assessment of the information found on requests and the conclusion of what you analyzed. This is title:${tl} -> This is link:${linksToAnalyze}. In completing your answer, you must 100% use the following: [title](link) ( brackets and quotes must be preserved ) | a brief analysis of the page and general conclusions for all pages - page analysis and general output should be added`,
-              // RUSSINA LANG below:
-	      // { role: "user", content: `Покажи описание страниц:${linksToAnalyze} дай свою комплексную оценку найденной информации по запросам и вывод того что ты анализировал. Это title:${tl} -> Это link:${linksToAnalyze}. В оформление своего ответа ты должен 100% использовать следующее: [title](link) ( скобки и кавычки должны быть сохранены ) | краткий анализ страницы и общие выводы по всем страницам - анализ страниц и общие вывод должны быть добавлены`,
-	    
-	    });
+            requestBodyAskForInternet.messages.push(
+		    // { role: 'user', content: `Show the descriptions of pages: ${linksToAnalyze} and provide your comprehensive evaluation of the information found on the requests and the output of what you analyzed. This is title: ${tl} -> This is link: ${linksToAnalyze}. In formatting response, you must use: "[title](link)" must included 100% . Brackets and quotes must be preserved. Brief analysis of the page and overall conclusions for all pages - the analysis of the pages and general conclusions should be added.`
+		    { role: "user", content: `Покажи описание страниц:${linksToAnalyze} дай свою комплексную оценку найденной информации по запросам и вывод того что ты анализировал. Это title:${tl} -> Это link:${linksToAnalyze}. В оформление своего ответа ты должен 100% использовать следующее: [title](link) ( скобки и кавычки должны быть сохранены ) | краткий анализ страницы и общие выводы по всем страницам - анализ страниц и общие вывод должны быть добавлены`,
+
+		   });
 
             const response = await axios.post(openaiEndpoint, requestBodyAskForInternet, {
               headers: {
@@ -206,7 +203,7 @@ const runBot = async () => {
               },
             });
 
-            // Use sendSpecialResponse to send an unfiltered response
+            // Use sendSpecialResponse to send response without filtering
             sendSpecialResponse(response.data, message.rid);
           } else {
             requestBody.messages[requestBody.messages.length - 1].content = `${searchMessage}`;

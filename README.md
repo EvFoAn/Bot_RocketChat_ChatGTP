@@ -1,12 +1,25 @@
-# You can use this app as ChatGPT Bot for RocketChat.
-# The bot can find information on the Internet, remember the latest messages and analyze them for a better response
+ChatGPT RocketChat Bot
 
-1. git clone repository
-2. apt install nodejs
-3. node install rocket.chat axios node-summarizer cheerio cli-spinners natural cli-cursor readline
-4. Go to your Rocket Chat, create a bot (user) and a room. Add this bot to the room.
+# ChatGPT RocketChat Bot is an application based on the GPT-3.5 language model trained by OpenAI that can remember users' questions and answers and search for information in real-time on the internet, responding to questions based on content analysis. You can use this application as a bot for RocketChat.
 
-5. Change vars:
+# Installation
+
+# 1. Clone the repository
+
+git clone https://github.com/yourusername/ChatGPT-RocketChat-Bot.git
+
+# 2. Install Node.js and npm
+
+apt install nodejs npm
+
+
+# 3. Install dependencies
+
+npm install rocket.chat axios node-summarizer cheerio cli-spinners natural cli-cursor readline
+
+# 4. Go to your Rocket Chat, create a bot (user) and a room. Add this bot to the room.
+
+# 5. Change variables:
 
 const ROCKETCHAT_URL = 'https://YOUR_URL_ROCKETCHAT'
 
@@ -22,9 +35,9 @@ const googleApiKey = 'YOUR_GOOGLE_APIKEY';
 
 const customSearchEngineId = 'YOUR_SEARCH_ENGINEID';
 
-6. node chatgpt.js
+# 6. Run the application
 
-...
+node chatgpt.js
 
 
 

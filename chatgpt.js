@@ -181,7 +181,7 @@ const runBot = async () => {
         await sendMessage("typing ...", message.rid);
 
         if (message.msg.startsWith("... ")) {
-          const searchResults = await searchQuery(message.msg.slice(6));
+          const searchResults = await searchQuery(message.msg);
 	  if (searchResults && searchResults.length > 0) {
             const linksToAnalyze = searchResults
               .map((result) => `${result.link}`)
@@ -192,7 +192,7 @@ const runBot = async () => {
 
             requestBodyAskForInternet.messages.push(
 		    // { role: 'user', content: `Show the descriptions of pages: ${linksToAnalyze} and provide your comprehensive evaluation of the information found on the requests and the output of what you analyzed. This is title: ${tl} -> This is link: ${linksToAnalyze}. In formatting response, you must use: "[title](link)" must included 100% . Brackets and quotes must be preserved. Brief analysis of the page and overall conclusions for all pages - the analysis of the pages and general conclusions should be added.`
-		    { role: "user", content: `Покажи описание страниц:${linksToAnalyze} дай свою комплексную оценку найденной информации по запросам и вывод того что ты анализировал. Это title:${tl} -> Это link:${linksToAnalyze}. В оформление своего ответа ты должен 100% использовать следующее: [title](link) ( скобки и кавычки должны быть сохранены ) | краткий анализ страницы и общие выводы по всем страницам - анализ страниц и общие вывод должны быть добавлены`,
+		    { role: "user", content: `Покажи описание страниц:${linksToAnalyze} дай свою комплексную оценку найденной информации по запросам и вывод того что ты анализировал. Это title:${tl} -> Это link:${linksToAnalyze}. В оформление своего ответа ты должен 100% использовать следующее: [title](link) ( скобки и кавычки должны быть сохранены ) | анализ страницы и выводы по анализу по всем страницам - анализ страниц и вывод по анализу должны быть добавлены`,
 
 		   });
 
